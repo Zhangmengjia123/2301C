@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点名器</title>
+</head>
+
+<body>
+    <div>
+
+        <h2 style="text-align: center;">2301C班级点名册</h3>
+            <p>时间：
+                <span id="span"></span>
+
+            </p>
+
+            <div style="display: flex;align-items: center;
+            justify-content: space-around;">
+                <div id="div" style="display: flex;flex-wrap: wrap;width: 500px;">
+
+                </div>
+                <div class="box">
+                    <h2>天选之人：</h2>
+                    <span>
+                        名字
+                    </span>
+                    <p style="margin-top: 60px;">
+                        <button>单人点名</button>
+                        <button>双人点名</button>
+                        <button>男生点名</button>
+                        <button>女生点名</button>
+                    </p>
+                </div>
+
+
+
+
+            </div>
+
+
+
+    </div>
+</body>
+<script type="text/javascript">
+
+    const ARR = ['杨晓宇', '陈亚东', '赵中阳', '展立业', '曹昊然', '李媛媛', '王婷婷',
+        '孙建', '杨子乐', '冯士靖', '张秋景', '李炎沛', '裴丽珂', '付少聪', '曹博文',
+        '李超凡', '王凯', '丁卓肖', '余道林', '王志阳', '张清莲', '刘博文', '周天龙',
+        '杨浩淇', '韩锡金']
+
+    let box = document.querySelector('#div')
+    for (var i = 0; i < ARR.length; i++) {
+        var div = document.createElement("span");
+        div.innerText += ARR[i]
+        box.appendChild(div)
+
+    }
+    function getNowFormatDate() {//获取当前时间
+        var date = new Date();
+        var seperator1 = "-";
+        var seperator2 = ":";
+        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var strDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes() + seperator2 + date.getSeconds();
+        return currentdate;
+    }
+
+
+    var span = document.querySelectorAll('#span')
+    // 获取时间的函数
+    getTime();
+    setInterval(getTime, 1000)
+    function getTime() {
+        var day = new Date();
+        var year = day.getFullYear();//年
+        var month = day.getMonth() + 1;//月
+        var dat = day.getDate();//
+        var hour = day.getHours();//小时
+        var minitue = day.getMinutes();//分钟
+        var second = day.getSeconds();//秒
+        month = month < 10 ? "g" + month : month;
+        dat = dat < 10 ? "0" + dat : dat;
+        hour = hour < 10 ? "0" + hour : hour;
+        minitue = minitue < 10 ? "0" + minitue : minitue;
+        second = second < 10 ? "0" + second : second;
+        span.innerHTML+= year + "-" + month + "-" + dat + " " + hour + ":" + minitue + ":" + second
+    }
+    console.log(getTime);
+
+</script>
+
+
+</html>
+
+<style>
+    button {
+        color: aliceblue;
+        background-color: #7cbe52;
+        padding: 5px;
+        border: 0;
+        border-radius: 10px;
+    }
+
+    body {
+        /* width: 100%;
+        height: 100%; */
+        background-size: cover;
+        background-image: url(./XK.jpg);
+        color: #fff;
+    }
+
+    .box {
+        /* background-color: red; */
+    }
+
+    .div {
+        background-color: #7cbe52;
+    }
+
+    div {
+        margin-top: 30px;
+    }
+
+    #div span {
+        width: 80px;
+        padding: 6px;
+        font-size: 20px;
+        background-image: linear-gradient(to right, #1d575d, #e6e9b0);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+    }
+</style>
